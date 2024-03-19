@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /joints
-  TimeStep: 0.02
+  TimeStep: 0
   messageData: 
 --- !u!114 &917272974
 MonoBehaviour:
