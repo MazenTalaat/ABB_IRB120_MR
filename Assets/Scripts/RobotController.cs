@@ -38,6 +38,8 @@ public class RobotController : MonoBehaviour
         {
             throw;
         }
-        
+
+        //OculusHand_L for position and rotation
+
     }
 }
