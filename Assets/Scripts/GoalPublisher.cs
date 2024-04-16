@@ -12,7 +12,13 @@ namespace RosSharp.RosBridgeClient
         // Message to be sent
         private MessageTypes.Std.String message;
         // Flag to send the position data
-        private bool sendData = false;
+        private bool sendPosData = false;
+        // Flag to send the rotation data
+        private bool sendRotData = false;
+
+        public RobotController robotController;
+
+        private int delay = 0;
         protected override void Start()
         {
             base.Start();
@@ -29,6 +35,49 @@ namespace RosSharp.RosBridgeClient
 
         private void Update()
         {
+            if(delay < 24)
+            {
+                delay++;
+                return;
+            }
+            else
+            {
+                if (sendPosData)
+                {
+                    var leftHandPos = robotController.deltaHandsPositionRotation[0];
+                    message.data = string.Format("{0},{1},{2},0,0,0,0,0,0,P", -leftHandPos.z * 100, -leftHandPos.x * 100, -leftHandPos.y * 100);
+                    Publish(message);
+                }
+                else if (sendRotData)
+                {
+                    var leftHandRot = robotController.deltaHandsPositionRotation[1];
+                    //                                   0 ,1, 2 , 3 ,4,5
+                    message.data = string.Format("0,0,0,{1},0,{0},{2},0,0,R", -((int)leftHandRot.z  + robotController.jointsAngles[2]), ((int)leftHandRot.y + robotController.jointsAngles[0]), ((int)leftHandRot.x + robotController.jointsAngles[3]));
+                    print((int)leftHandRot.x);
+                    
+                    Publish(message);
+                }
+                else
+                {
+                    message.data = string.Format("0,0,0,0,0,0,0,0,0,P");
+                    Publish(message);
+                }
+
+                //if (Input.GetKeyDown("w"))
+                //{
+                //    print("w");
+                //    message.data = string.Format("0,0,0,{0},{1},{2},{3},{4},{5},R", (1 + robotController.jointsAngles[0]), robotController.jointsAngles[1], robotController.jointsAngles[2], robotController.jointsAngles[3], robotController.jointsAngles[4], robotController.jointsAngles[5]);
+
+                //    Publish(message);
+                //}
+                //else if (Input.GetKeyDown("s"))
+                //{
+                //    print("s");
+                //    message.data = string.Format("0,0,0,{0},{1},{2},{3},{4},{5},R", (robotController.jointsAngles[0] - 1), robotController.jointsAngles[1], robotController.jointsAngles[2], robotController.jointsAngles[3], robotController.jointsAngles[4], robotController.jointsAngles[5]);
+                //    Publish(message);
+                //}
+                delay = 0;
+            }
             //message.data = messageData;
             //Publish(message);
             //if (Input.GetKeyDown("w"))
@@ -61,21 +110,21 @@ namespace RosSharp.RosBridgeClient
             //    message.data = "0,0,0,0,0,0,0,0,0,P";
             //    Publish(message);
             //}
-            if (sendData)
-            {
-                print("Index forward");
-                var leftHandPos = RobotController.deltaHandsPositionRotation[0];
-                print(RobotController.deltaHandsPositionRotation[0]);
-                // TODO add more controls
-                message.data = string.Format("{0},{1},{2},0,0,0,0,0,0,P", leftHandPos.x, leftHandPos.y, leftHandPos.z); 
-                Publish(message);
-            }
+
+            
+
         }
 
-        public void setSendData(bool b)
+        public void setSendPosData(bool b)
         {
             print("Index forward");
-            sendData = b;
+            sendPosData = b;
+        }
+
+        public void setRotPosData(bool b)
+        {
+            print("Index forward");
+            sendRotData = b;
         }
     }
 }

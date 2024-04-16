@@ -7,7 +7,7 @@ namespace RosSharp.RosBridgeClient
     public class JointsSubscriber : UnitySubscriber<MessageTypes.Std.String>
     {
         // Received messageData
-        public static string messageData;
+        public string messageData;
         protected override void Start()
         {
             base.Start();
