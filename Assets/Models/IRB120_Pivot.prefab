@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1737657616317323574}
   m_Layer: 0
-  m_Name: link2
+  m_Name: Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3040328149079890845}
   m_Layer: 0
-  m_Name: link4
+  m_Name: Joint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1204,7 +1204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8447571076364860533}
   m_Layer: 0
-  m_Name: link6
+  m_Name: Joint6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1568,7 +1568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8835064275881569999}
   m_Layer: 0
-  m_Name: link1
+  m_Name: Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1815,7 +1815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1620452657877018294}
   m_Layer: 0
-  m_Name: link5
+  m_Name: Joint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2015,7 +2015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7752888596753354432}
   m_Layer: 0
-  m_Name: link3
+  m_Name: Joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
